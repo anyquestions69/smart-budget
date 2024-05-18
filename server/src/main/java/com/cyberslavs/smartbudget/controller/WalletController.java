@@ -13,7 +13,7 @@ import java.util.List;
 public class WalletController {
     @Autowired
     WalletRepository walletRepository;
-    @GetMapping("/")
+    @GetMapping
     List<Wallet> findAll(){
         return walletRepository.findAll();
     }

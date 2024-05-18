@@ -12,7 +12,7 @@ import java.util.List;
 public class CategoryController {
     @Autowired
     CategoryRepository categoryRepository;
-    @GetMapping("/")
+    @GetMapping
     public List<Category> findAll(){
         return categoryRepository.findAll();
     }
