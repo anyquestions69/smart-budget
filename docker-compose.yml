@@ -1,0 +1,41 @@
+services:
+  server:
+    build:
+      context: ./server
+    ports:
+      - 8080:8080
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db/postgres
+    env_file:
+      - .env
+  db:
+    image: postgres
+    restart: always
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    ports:
+      - 5432:5432
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "${DB_USER}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  pgadmin:
+    container_name: pgadmin
+    depends_on:
+      - db
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@mail.ru
+      PGADMIN_DEFAULT_PASSWORD: aaa000
+    expose:
+      - '80'
+    restart: always
+volumes:
+  db-data:
