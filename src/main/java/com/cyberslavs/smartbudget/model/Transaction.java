@@ -1,9 +1,6 @@
 package com.cyberslavs.smartbudget.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -15,9 +12,18 @@ public class Transaction {
     private Long id;
 
     private String name;
-    private Float price;
+    private Double price;
     private LocalDate date;
-    public Transaction(){}
+    @ManyToOne
+    private Wallet wallet;
+    @ManyToOne
+    private Category category;
+    protected Transaction(){}
+    public Transaction(String name, Double price, LocalDate date){
+        this.name = name;
+        this.price = price;
+        this.date = date;
+    }
 
     public String getName() {
         return name;
@@ -25,5 +31,21 @@ public class Transaction {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Wallet getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(Wallet wallet) {
+        this.wallet = wallet;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
