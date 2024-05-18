@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
 
-//        @Query("SELECT t FROM Transaction t WHERE t.publishDate > :date")
-//       List<Transaction> findByPublishedDateAfter(@Param("date") LocalDate date);
+    @Query("SELECT t FROM Transaction t WHERE EXTRACT(month from t.date) = :month")
+    List<Transaction> findByMonth(@Param("month") int month);
     //@Query("Select * from transaction where ")
     List<Transaction> findByWalletId(long id);
     List<Transaction> findByCategoryId(long id);

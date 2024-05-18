@@ -44,6 +44,11 @@ public class TransactionController {
         }
 
     }
+    @GetMapping("/month/{m}")
+    public List<Transaction> findWithinMonth(@PathVariable int m){
+        List<Transaction> transactions = transactionRepository.findByMonth(m);
+        return transactions;
+    }
     @PostMapping("/")
     public ResponseEntity<Transaction> createTransaction(@RequestBody TransactionDTO transaction){
         Transaction newTransaction=new Transaction(transaction.name, transaction.price, transaction.date);
