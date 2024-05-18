@@ -2,11 +2,13 @@ package com.cyberslavs.smartbudget.model;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicUpdate;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
+@DynamicUpdate
 public class Wallet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

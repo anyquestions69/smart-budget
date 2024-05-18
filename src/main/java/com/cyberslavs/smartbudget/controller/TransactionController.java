@@ -53,7 +53,8 @@ public class TransactionController {
                 newTransaction.setCategory(category);
                 return transactionRepository.save(newTransaction);
             }).orElseThrow();
-            return wallet;
+             wallet.setBalance(wallet.getBalance()+transaction.price);
+             return walletRepository.save(wallet);
         }).orElseThrow();
         return new ResponseEntity<>(newTransaction, HttpStatus.CREATED);
     }

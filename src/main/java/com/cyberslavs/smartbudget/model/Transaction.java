@@ -1,11 +1,13 @@
 package com.cyberslavs.smartbudget.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.DynamicUpdate;
 
 import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
+@DynamicUpdate
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
