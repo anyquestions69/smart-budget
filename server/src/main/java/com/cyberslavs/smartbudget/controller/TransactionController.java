@@ -49,7 +49,7 @@ public class TransactionController {
         List<Transaction> transactions = transactionRepository.findByMonth(m);
         return transactions;
     }
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<Transaction> createTransaction(@RequestBody TransactionDTO transaction){
         Transaction newTransaction=new Transaction(transaction.name, transaction.price, transaction.date);
         walletRepository.findById(transaction.walletId).map(wallet -> {
