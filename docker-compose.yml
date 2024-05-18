@@ -26,13 +26,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-  client:
-    build:
-      context: ./client
-    ports:
-      - 3000:3000
-    depends_on:
-      - server
+  
     
   pgadmin:
     container_name: pgadmin
