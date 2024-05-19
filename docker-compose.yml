@@ -40,7 +40,16 @@ services:
       - ./nginx:/etc/nginx/conf.d
       - ./client:/var/www/static
     restart: always
-    
+  client:  
+    build:
+      context: ./client
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+      - server  
+    env_file:
+      - .env
   pgadmin:
     container_name: pgadmin
     depends_on:
