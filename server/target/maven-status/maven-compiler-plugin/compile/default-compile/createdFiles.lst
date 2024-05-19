@@ -1,11 +1,12 @@
 com/cyberslavs/smartbudget/repository/WalletRepository.class
 com/cyberslavs/smartbudget/repository/CategoryRepository.class
 com/cyberslavs/smartbudget/controller/WalletController.class
-com/cyberslavs/smartbudget/repository/TransactionRepository.class
-com/cyberslavs/smartbudget/controller/TransactionController.class
 com/cyberslavs/smartbudget/model/Transaction.class
 com/cyberslavs/smartbudget/DTO/TransactionDTO.class
-com/cyberslavs/smartbudget/model/Category.class
 com/cyberslavs/smartbudget/model/Wallet.class
+com/cyberslavs/smartbudget/repository/TransactionRepository.class
+com/cyberslavs/smartbudget/controller/TransactionController.class
+com/cyberslavs/smartbudget/SmartBudgetApplication$1.class
+com/cyberslavs/smartbudget/model/Category.class
 com/cyberslavs/smartbudget/SmartBudgetApplication.class
 com/cyberslavs/smartbudget/controller/CategoryController.class

@@ -26,7 +26,20 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-  
+  nginx:
+    container_name: proxy_nginx
+    depends_on:
+      - server
+      - db
+    image: nginx:latest
+    ports:
+      - '80:80'
+    env_file:
+      - .env
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./client:/var/www/static
+    restart: always
     
   pgadmin:
     container_name: pgadmin
@@ -39,5 +52,6 @@ services:
     expose:
       - '80'
     restart: always
+  
 volumes:
   db-data:
