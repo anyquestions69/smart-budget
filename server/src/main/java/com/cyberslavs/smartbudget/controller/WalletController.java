@@ -24,10 +24,10 @@ public class WalletController {
     }
 
     @PostMapping("/register")
-    String register(@RequestBody Wallet user){
+    Wallet register(@RequestBody Wallet user){
         Wallet newUser  = walletRepository.save(user);
         System.out.println(newUser.getBalance());
-        return newUser.getEmail();
+        return newUser;
     }
 
 }
